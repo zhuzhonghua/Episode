@@ -1,0 +1,4 @@
+message testMessage
+{
+    optional string hello = 1;
+}
