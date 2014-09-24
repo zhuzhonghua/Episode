@@ -1,6 +1,7 @@
 var myutil      = require('../lib/myutil');
 var Acceptor 	= require('../lib/acceptor');
 var Socket      = require('../lib/socket');
+var RPC         = require('../lib/rpc');
 
 var LOG 	= myutil.LOG;
 var ERROR   = myutil.ERROR;
@@ -40,3 +41,9 @@ function newSock(newSock)
 }
 
 var acceptorClient = new Acceptor(1234, newSock);
+
+var rpcHandler = {test: function(s, cb){
+	cb(s+"2");
+}};
+
+RPC.initServer(9527, rpcHandler);

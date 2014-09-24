@@ -1,4 +1,5 @@
 var myutil = require('../lib/myutil');
+var RPC    = require('../lib/rpc');
 
 var LOG         = myutil.LOG;
 var ERROR       = myutil.ERROR;
@@ -48,3 +49,11 @@ var connectServer = function(ip, port){
 }
 
 connectServer("127.0.0.1", 1234);
+
+RPC.initClient(9527, "127.0.0.1");
+
+setTimeout(function() {
+	RPC.rpcClient.test("client ", function(res){
+		console.log(res);
+	});
+}, 5000);
