@@ -11,13 +11,10 @@ var connSocket  = null;
 
 var state = 0;
 
-var account = "2234";
-var charname = "abc";
-
 function succ(session)
 {
-    var inst = new op.testMessage({hello:"hello"});
-    session.sendByteBuffer(1, inst.toBuffer());
+    //var inst = new op.testMessage({hello:"hello"});
+    //session.sendByteBuffer(1, inst.toBuffer());
 }
 
 function err(sockObj)
@@ -27,10 +24,12 @@ function err(sockObj)
 
 function msgCB(sockObj, msgID, buf)
 {
-    if(msgID == 2){        
-        LOG("recv msg 2 from server");
-    }
-    
+    if(msgID == 1){
+		var inst = op.testRPCMessage.decode(buf);
+
+		var msg = new op.testRPCMessage_RET({index: inst.index});
+		sockObj.sendByteBuffer(2, msg.toBuffer());
+	}    
 }
 
 var connectServer = function(ip, port){

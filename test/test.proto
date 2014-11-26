@@ -2,3 +2,14 @@ message testMessage
 {
     optional string hello = 1;
 }
+
+message testRPCMessage
+{
+    optional int32 index = 1;
+    optional string hello = 2;
+}
+
+message testRPCMessage_RET
+{
+    optional int32 index = 1;
+}
