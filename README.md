@@ -94,23 +94,6 @@ Socket 作为客户端发起tcp连接，或者作为服务器接收tcp连接
 									 })});
 					}));
 	
----
-
-rpc.initServer 远程过程调用时，开启服务器
-
-	var rpc = require('../lib/rpc');
-	rpc.initServer(9527, {AddOne: function(num, cb){
-					cb(num+1);
-				}});
 
 ---
-
-rpc.initClient 远程过程调用时，开始客户端
-
-	var rpc = require('../lib/rpc');
-	rpc.initClient(9527, "127.0.0.1");
-	setTimeout(function(){
-		rpc.rpcClient.AddOne(10, function(num){
-						console.log('get num '+num);
-					});
-	}, 5000);
+RPC使用实例，参考test/testMasterServer.js与test/testChildServer.js
